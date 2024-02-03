@@ -1,8 +1,14 @@
-let star;
+let stars = [];
 
 function setup(){
     createCanvas(400, 400);
-    star = createVector(200, 200, 0);
+    for (let i = 0; 50; i++) {
+        stars[i] = createVector(
+            random(-width,width),
+            random(-height,height),
+            random(10, width)
+        );
+    }
 }
 
 function draw(){
@@ -10,11 +16,10 @@ function draw(){
     fill(255);
     translate( width / 2, height / 2);
 
-    let x = star.x / star.z;
-    let y = star.y / star.z;
-
-    let d = map(star.z, 0, 400, 1, 10);
-    circle(x, y, d);
-
-    star.z += 10;
+    for (let star of stars) {
+        let x = star.x / star.z;
+        let y = star.y / star.z;
+        let d = 16;
+        circle(x, y, d);
+    }
 }
